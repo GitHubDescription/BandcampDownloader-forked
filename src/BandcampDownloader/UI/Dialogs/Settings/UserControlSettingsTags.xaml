@@ -1,0 +1,224 @@
+﻿<UserControl
+    x:Class="BandcampDownloader.UserControlSettingsTags"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    xmlns:local="clr-namespace:BandcampDownloader"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="userControlSettingsTags"
+    Width="410"
+    Height="280"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
+    lex:ResxLocalizationProvider.DefaultDictionary="Resources"
+    KeyboardNavigation.TabNavigation="Local"
+    mc:Ignorable="d">
+    <Grid x:Name="gridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid x:Name="gridFileNameFormat" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label
+                x:Name="labelFileNameFormat"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=textBoxFileNameFormat}" />
+            <TextBox
+                x:Name="textBoxFileNameFormat"
+                Grid.Column="1"
+                Height="20"
+                Margin="0,0,5,0"
+                VerticalContentAlignment="Center"
+                TabIndex="0"
+                TextChanged="TextBox_TextChanged"
+                ToolTip="{lex:Loc}"
+                ToolTipService.ShowDuration="60000">
+                <Binding Path="FileNameFormat" UpdateSourceTrigger="Explicit">
+                    <Binding.ValidationRules>
+                        <local:Mp3ExtensionRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+        </Grid>
+        <CheckBox
+            x:Name="checkBoxModifyTags"
+            Grid.Row="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="{lex:Loc}"
+            IsChecked="{Binding ModifyTags, UpdateSourceTrigger=Explicit}"
+            TabIndex="1"
+            ToolTip="{lex:Loc}"
+            ToolTipService.ShowDuration="60000" />
+        <Grid
+            x:Name="gridTags"
+            Grid.Row="2"
+            Margin="18,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
+            </Grid.RowDefinitions>
+            <Label
+                x:Name="labelArtist"
+                Grid.Row="0"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=comboBoxArtist}" />
+            <lex:EnumComboBox
+                x:Name="comboBoxArtist"
+                Grid.Row="0"
+                Grid.Column="1"
+                Width="120"
+                Height="22"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
+                PrependType="True"
+                SelectedItem="{Binding TagArtist, UpdateSourceTrigger=Explicit}"
+                TabIndex="2"
+                Type="{x:Type local:TagEditAction}" />
+            <Label
+                x:Name="labelTrackNumber"
+                Grid.Row="1"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=comboBoxTrackNumber}" />
+            <lex:EnumComboBox
+                x:Name="comboBoxTrackNumber"
+                Grid.Row="1"
+                Grid.Column="1"
+                Width="120"
+                Height="22"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
+                PrependType="True"
+                SelectedItem="{Binding TagTrackNumber, UpdateSourceTrigger=Explicit}"
+                TabIndex="3"
+                Type="{x:Type local:TagEditAction}" />
+            <Label
+                x:Name="labelTrackTitle"
+                Grid.Row="2"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=comboBoxTrackTitle}" />
+            <lex:EnumComboBox
+                x:Name="comboBoxTrackTitle"
+                Grid.Row="2"
+                Grid.Column="1"
+                Width="120"
+                Height="22"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
+                PrependType="True"
+                SelectedItem="{Binding TagTrackTitle, UpdateSourceTrigger=Explicit}"
+                TabIndex="4"
+                Type="{x:Type local:TagEditAction}" />
+            <Label
+                x:Name="labelAlbumTitle"
+                Grid.Row="3"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=comboBoxAlbumTitle}" />
+            <lex:EnumComboBox
+                x:Name="comboBoxAlbumTitle"
+                Grid.Row="3"
+                Grid.Column="1"
+                Width="120"
+                Height="22"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
+                PrependType="True"
+                SelectedItem="{Binding TagAlbumTitle, UpdateSourceTrigger=Explicit}"
+                TabIndex="5"
+                Type="{x:Type local:TagEditAction}" />
+            <Label
+                x:Name="labelAlbumArtist"
+                Grid.Row="4"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=comboBoxAlbumArtist}" />
+            <lex:EnumComboBox
+                x:Name="comboBoxAlbumArtist"
+                Grid.Row="4"
+                Grid.Column="1"
+                Width="120"
+                Height="22"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
+                PrependType="True"
+                SelectedItem="{Binding TagAlbumArtist, UpdateSourceTrigger=Explicit}"
+                TabIndex="6"
+                Type="{x:Type local:TagEditAction}" />
+            <Label
+                x:Name="labelYear"
+                Grid.Row="5"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=comboBoxYear}" />
+            <lex:EnumComboBox
+                x:Name="comboBoxYear"
+                Grid.Row="5"
+                Grid.Column="1"
+                Width="120"
+                Height="22"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
+                PrependType="True"
+                SelectedItem="{Binding TagYear, UpdateSourceTrigger=Explicit}"
+                TabIndex="7"
+                Type="{x:Type local:TagEditAction}" />
+            <Label
+                x:Name="labelLyrics"
+                Grid.Row="6"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=comboBoxLyrics}" />
+            <lex:EnumComboBox
+                x:Name="comboBoxLyrics"
+                Grid.Row="6"
+                Grid.Column="1"
+                Width="120"
+                Height="22"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
+                PrependType="True"
+                SelectedItem="{Binding TagLyrics, UpdateSourceTrigger=Explicit}"
+                TabIndex="8"
+                Type="{x:Type local:TagEditAction}" />
+            <Label
+                x:Name="labelComments"
+                Grid.Row="7"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=comboBoxComments}" />
+            <lex:EnumComboBox
+                x:Name="comboBoxComments"
+                Grid.Row="7"
+                Grid.Column="1"
+                Width="120"
+                Height="22"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
+                PrependType="True"
+                SelectedItem="{Binding TagComments, UpdateSourceTrigger=Explicit}"
+                TabIndex="9"
+                Type="{x:Type local:TagRemoveAction}" />
+        </Grid>
+    </Grid>
+</UserControl>
